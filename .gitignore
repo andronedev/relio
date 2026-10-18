@@ -1,0 +1,6 @@
+/target
+/fixtures/*.sqlite
+/fixtures/*.sqlite-*
+/dist
+/nickel/build
+/scripts/kobo.env

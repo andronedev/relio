@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Add books to your Kobo and manage its library from your phone or computer, over your Wi-Fi.">
+  <meta name="theme-color" content="#e3e5e0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1a1c1e" media="(prefers-color-scheme: dark)">
+  <title>Relio</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <header class="topbar">
+    <span class="brand"><svg class="brand-mark" viewBox="0 0 42 42" aria-hidden="true"><rect x="2.5" y="9" width="15" height="24" rx="2.5"/><path d="M6.5 14h7M6.5 18.5h7M6.5 23h4.5"/><rect x="30.5" y="15" width="9" height="18" rx="2.2"/><path d="M33.5 29.5h3"/><path class="brand-arrows" d="M20 18.5h8M25 15.5l3 3-3 3M28 26h-8M23 23l-3 3 3 3"/></svg>Relio</span>
+    <a class="quiet-link" href="https://github.com/andronedev/relio">GitHub</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <h1 data-i18n="heroTitle"></h1>
+        <p class="lede" data-i18n="heroText"></p>
+        <p class="actions">
+          <a class="button" href="#install" data-i18n="installCta"></a>
+          <a class="quiet-link" href="https://github.com/andronedev/relio" data-i18n="sourceLink"></a>
+        </p>
+      </div>
+      <div class="pair" aria-hidden="true">
+        <div class="device reader"><img src="kobo-panel.png" alt="" width="536" height="724"></div>
+        <svg class="trip" viewBox="0 0 24 24"><path d="M3 8h17M15 3l5 5-5 5M21 16H4M9 11l-5 5 5 5"/></svg>
+        <div class="device phone">
+          <picture>
+            <source srcset="phone-highlights-dark.png" media="(prefers-color-scheme: dark)">
+            <img src="phone-highlights-light.png" alt="" width="780" height="1520">
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <section class="how" aria-labelledby="how-title">
+      <h2 id="how-title" data-i18n="howTitle"></h2>
+      <ol class="how-steps">
+        <li>
+          <div class="stage">
+            <div class="bar"><img src="kobo-bar.png" alt="" width="340" height="112"><span class="ring"></span></div>
+          </div>
+          <p data-i18n="how1"></p>
+        </li>
+        <li>
+          <div class="stage"><div class="device reader"><img src="kobo-pair.png" alt="" width="536" height="724"></div></div>
+          <p data-i18n="how2"></p>
+        </li>
+        <li>
+          <div class="stage">
+            <div class="device phone">
+              <picture>
+                <source srcset="phone-library-dark.png" media="(prefers-color-scheme: dark)">
+                <img src="phone-library-light.png" alt="" width="780" height="1520">
+              </picture>
+            </div>
+          </div>
+          <p data-i18n="how3"></p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="library" aria-labelledby="library-title">
+      <h2 id="library-title" data-i18n="libraryTitle"></h2>
+      <div class="shots">
+        <figure>
+          <picture>
+            <source srcset="library-dark.png" media="(prefers-color-scheme: dark)">
+            <img src="library-light.png" alt="" width="1240" height="665">
+          </picture>
+          <figcaption data-i18n="libraryText"></figcaption>
+        </figure>
+        <figure>
+          <picture>
+            <source srcset="book-dark.png" media="(prefers-color-scheme: dark)">
+            <img src="book-light.png" alt="" width="900" height="692">
+          </picture>
+          <figcaption data-i18n="bookText"></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="install" id="install" aria-labelledby="install-title">
+      <h2 id="install-title" data-i18n="title"></h2>
+      <ol class="steps">
+        <li class="step" id="step-plug" data-state="active">
+          <h3 data-i18n="plugTitle"></h3>
+          <p data-i18n="plugText"></p>
+        </li>
+
+        <li class="step" id="step-pick" data-state="active">
+          <h3 data-i18n="pickTitle"></h3>
+          <p data-i18n="pickText"></p>
+          <button class="button" id="pick" type="button" data-i18n="pickButton"></button>
+          <p class="status" id="pick-status" role="status"></p>
+        </li>
+
+        <li class="step" id="step-install" data-state="pending">
+          <h3 data-i18n="installTitle"></h3>
+          <p data-i18n="installText"></p>
+          <button class="button" id="install" type="button" disabled data-i18n="installButton"></button>
+          <p class="status" id="install-status" role="status"></p>
+        </li>
+
+        <li class="step" id="step-finish" data-state="pending">
+          <h3 data-i18n="finishTitle"></h3>
+          <p data-i18n="finishText"></p>
+        </li>
+      </ol>
+
+      <div class="fallback" id="fallback" hidden>
+        <h3 data-i18n="fallbackTitle"></h3>
+        <p data-i18n="fallbackText"></p>
+        <a class="button" href="KoboRoot.tgz" download data-i18n="fallbackButton"></a>
+      </div>
+    </section>
+
+    <section class="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title" data-i18n="faqTitle"></h2>
+      <details><summary data-i18n="q1"></summary><p data-i18n="a1"></p></details>
+      <details><summary data-i18n="q2"></summary><p data-i18n="a2"></p></details>
+      <details><summary data-i18n="q3"></summary><p data-i18n="a3"></p></details>
+      <details><summary data-i18n="q4"></summary><p data-i18n="a4"></p></details>
+      <details><summary data-i18n="q5"></summary><p data-i18n="a5"></p></details>
+      <details><summary data-i18n="q6"></summary><p data-i18n="a6"></p></details>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p data-i18n="footerLicense"></p>
+    <label class="language">
+      <span data-i18n="language"></span>
+      <select id="language"></select>
+    </label>
+  </footer>
+
+  <script src="install.js" type="module"></script>
+</body>
+</html>

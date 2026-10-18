@@ -1,0 +1,79 @@
+name: Release
+
+# Pushing a tag such as v0.2.0 builds the package, signs the update manifest, publishes the
+# GitHub release and deploys the installer page. E-readers pick the new version up from there.
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+env:
+  SITE_URL: https://relio.androne.dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Check that the tag matches the workspace version
+        run: |
+          version=$(sed -n 's/^version = "\(.*\)"$/\1/p' Cargo.toml | head -n 1)
+          test "v$version" = "$GITHUB_REF_NAME"
+          echo "VERSION=$version" >> "$GITHUB_ENV"
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: armv7-unknown-linux-musleabihf
+      - uses: Swatinem/rust-cache@v2
+      - uses: mlugg/setup-zig@v2
+        with:
+          version: 0.17.0
+      - run: cargo install cargo-zigbuild --locked
+      - run: sudo apt-get install -y minisign
+
+      - run: cargo test --workspace
+      - run: node scripts/check-i18n.mjs
+      - run: scripts/package-kobo.sh
+
+      - name: Write and sign the update manifest
+        env:
+          MINISIGN_KEY: ${{ secrets.MINISIGN_KEY }}
+        run: |
+          test -n "$MINISIGN_KEY"
+          python3 scripts/release-manifest.py "$VERSION" dist/KoboRoot.tgz "$SITE_URL" "$GITHUB_REPOSITORY" > dist/update.json
+          printf '%s\n' "$MINISIGN_KEY" > "$RUNNER_TEMP/release.key"
+          minisign -S -s "$RUNNER_TEMP/release.key" -m dist/update.json -t "relio $VERSION"
+          rm "$RUNNER_TEMP/release.key"
+          minisign -V -P "$(sed -n 's/^const RELEASE_KEY: &str = "\(.*\)";$/\1/p' crates/reliod/src/update.rs)" -m dist/update.json
+          cp dist/update.json dist/update.json.minisig dist/site/
+
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" dist/KoboRoot.tgz dist/update.json dist/update.json.minisig \
+            --title "Relio $VERSION" --generate-notes
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist/site
+
+  pages:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v5

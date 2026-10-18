@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="2.0" unique-identifier="id"><metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:title><![CDATA[CDATA <title>]]></dc:title><dc:identifier id="id">x</dc:identifier></metadata><manifest><item id="cover" href="Images/cover.png" media-type="image/png" properties="old"/><item id="t" href="Text/Chapter%201.xhtml" media-type="application/xhtml+xml"/></manifest><spine><itemref idref="t"/></spine></package>

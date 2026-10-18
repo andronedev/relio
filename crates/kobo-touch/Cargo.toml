@@ -1,0 +1,10 @@
+[package]
+name = "kobo-touch"
+description = "Development tool: inspect the Kobo touchscreen and inject taps"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+libc = "0.2"

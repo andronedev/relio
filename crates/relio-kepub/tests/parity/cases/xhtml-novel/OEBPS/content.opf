@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" unique-identifier="bookid" version="2.0">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+    <dc:title>Parity &amp; Tests</dc:title>
+    <dc:creator opf:role="aut">Jane Doe</dc:creator>
+    <dc:contributor opf:role="bkp">calibre (5.0.0) [https://calibre-ebook.com]</dc:contributor>
+    <dc:identifier id="bookid">urn:uuid:12345678-1234-1234-1234-123456789abc</dc:identifier>
+    <dc:language>en</dc:language>
+    <meta name="calibre:timestamp" content="2020-01-01T00:00:00+00:00"/>
+    <meta name="cover" content="cover-img"/>
+  </metadata>
+  <manifest>
+    <item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/>
+    <item id="css" href="Styles/style.css" media-type="text/css"/>
+    <item id="cover-img" href="Images/cover.png" media-type="image/png"/>
+    <item id="c0" href="Text/cover.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c1" href="Text/ch1.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c2" href="Text/ch2.xhtml" media-type="application/xhtml+xml"/>
+  </manifest>
+  <spine toc="ncx">
+    <itemref idref="c0"/>
+    <itemref idref="c1"/>
+    <itemref idref="c2"/>
+  </spine>
+</package>

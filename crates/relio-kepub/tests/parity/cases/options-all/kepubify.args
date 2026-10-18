@@ -1,0 +1,11 @@
+--smarten-punctuation
+--hyphenate
+--fullscreen-reading-fixes
+--css
+p { color: black; }
+--css
+h1 { font-size: 2em; }
+--replace
+FIND_ME|replaced
+--replace
+ME_TOO|<b>too</b>

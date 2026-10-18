@@ -1,0 +1,5 @@
+Relio
+Copyright 2026 andronedev
+
+relio-kepub is a port of kepubify and includes code under the MIT and BSD
+licenses; their notices are in crates/relio-kepub/NOTICE.

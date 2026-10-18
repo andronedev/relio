@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- generated -->
+<opf:package xmlns:opf="http://www.idpf.org/2007/opf" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0" unique-identifier="id">
+<opf:metadata><dc:title>Pre&#233;fixed &apos;opf&apos;</dc:title><opf:meta name="cover" content="cover"/><dc:identifier id="id">x</dc:identifier></opf:metadata>
+<opf:manifest><opf:item id="cover" href="Images/cover.png" media-type="image/png"/><opf:item id="t" href="Text/a.xhtml" media-type="application/xhtml+xml"/></opf:manifest>
+<opf:spine><opf:itemref idref="t"/></opf:spine>
+<opf:guide><opf:reference type="text" href="Text/a.xhtml" title="A &amp; B"/></opf:guide>
+</opf:package>

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="2.0" unique-identifier="id">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:title>Root</dc:title><dc:identifier id="id">x</dc:identifier><meta name="cover" content="missing"/></metadata>
+  <manifest><item id="t" href="OEBPS/Text/a.xhtml" media-type="text/html"/><item id="u" href="OEBPS/Text/b.XHTML" media-type="application/xml"/></manifest>
+  <spine><itemref idref="t" linear="no"/><itemref idref="u"/></spine>
+</package>

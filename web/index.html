@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#e3e5e0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1a1c1e" media="(prefers-color-scheme: dark)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Relio">
+  <title>Relio</title>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icon-180.png">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <span class="brand"><svg class="brand-mark" viewBox="0 0 42 42" aria-hidden="true"><rect x="2.5" y="9" width="15" height="24" rx="2.5"/><path d="M6.5 14h7M6.5 18.5h7M6.5 23h4.5"/><rect x="30.5" y="15" width="9" height="18" rx="2.2"/><path d="M33.5 29.5h3"/><path class="brand-arrows" d="M20 18.5h8M25 15.5l3 3-3 3M28 26h-8M23 23l-3 3 3 3"/></svg>Relio</span>
+    <span class="device" id="device" aria-live="polite"></span>
+  </header>
+
+  <p class="loading" id="loading" role="status" data-i18n="loading"></p>
+
+  <main id="app" hidden>
+    <section class="resume" id="resume" aria-labelledby="resume-title"></section>
+
+    <nav class="tabs" role="tablist" data-i18n-attr="aria-label: sections">
+      <button type="button" role="tab" id="tab-library" aria-controls="panel-library" aria-selected="true" data-i18n="tabLibrary"></button>
+      <button type="button" role="tab" id="tab-highlights" aria-controls="panel-highlights" aria-selected="false" tabindex="-1" data-i18n="tabHighlights"></button>
+      <button type="button" role="tab" id="tab-shelves" aria-controls="panel-shelves" aria-selected="false" tabindex="-1" data-i18n="tabShelves"></button>
+    </nav>
+
+    <section role="tabpanel" id="panel-library" aria-labelledby="tab-library">
+      <div class="add-books">
+        <div class="drop-zone">
+          <button class="button" id="add-books" type="button" data-i18n="addBooks"></button>
+          <p class="drop-hint" data-i18n="dropHint"></p>
+          <p class="formats" data-i18n="formats"></p>
+        </div>
+        <label class="check">
+          <input type="checkbox" id="to-kepub" checked>
+          <span><span class="check-label" data-i18n="toKepub"></span><span class="check-hint" data-i18n="toKepubHint"></span></span>
+        </label>
+        <input type="file" id="book-files" multiple hidden accept=".epub,.pdf,.cbz,.cbr,.mobi,.txt,.html,.rtf">
+        <ul class="uploads" id="uploads" aria-live="polite"></ul>
+      </div>
+      <div class="toolbar">
+        <input type="search" id="search" data-i18n-attr="placeholder: searchPlaceholder; aria-label: searchLabel">
+        <div class="filters" role="group" data-i18n-attr="aria-label: statusFilter">
+          <button type="button" data-status="all" aria-pressed="true" data-i18n="filterAll"></button>
+          <button type="button" data-status="reading" aria-pressed="false" data-i18n="filterReading"></button>
+          <button type="button" data-status="unread" aria-pressed="false" data-i18n="filterUnread"></button>
+          <button type="button" data-status="finished" aria-pressed="false" data-i18n="filterFinished"></button>
+        </div>
+      </div>
+      <ul class="books" id="books"></ul>
+    </section>
+
+    <section role="tabpanel" id="panel-highlights" aria-labelledby="tab-highlights" hidden>
+      <div id="highlights" class="highlights"></div>
+    </section>
+
+    <section role="tabpanel" id="panel-shelves" aria-labelledby="tab-shelves" hidden>
+      <div id="shelves" class="shelves"></div>
+    </section>
+
+    <p class="stats" id="stats"></p>
+  </main>
+
+  <section class="gate" id="gate" hidden>
+    <h1 data-i18n="gateTitle"></h1>
+    <p data-i18n="gateHint"></p>
+    <form id="gate-form">
+      <label for="gate-code" data-i18n="codeLabel"></label>
+      <input id="gate-code" class="code-input" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required dir="ltr">
+      <button class="button" type="submit" data-i18n="connect"></button>
+    </form>
+    <p class="error" id="gate-error" role="alert"></p>
+  </section>
+
+  <footer class="site-footer">
+    <label class="language">
+      <span data-i18n="language"></span>
+      <select id="language"></select>
+    </label>
+  </footer>
+
+  <dialog id="book-dialog" aria-labelledby="book-dialog-title"></dialog>
+  <dialog id="confirm-dialog" class="confirm" aria-labelledby="confirm-title"></dialog>
+  <p class="toast" id="toast" role="status" hidden></p>
+
+  <script src="/app.js" type="module"></script>
+</body>
+</html>
