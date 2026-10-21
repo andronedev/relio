@@ -7,6 +7,7 @@
 #include <QFileSystemWatcher>
 #include <QImage>
 #include <QPainter>
+#include <QPainterPath>
 #include <QPointer>
 #include <QTimer>
 #include <QWidget>
@@ -117,9 +118,10 @@ private:
         update();
     }
 
-    // An e-reader and a phone with an arrow each way, as in web/icon.svg, drawn on the
-    // same 42-unit grid and 2.2-unit stroke as Nickel's status-bar icons. A dot on the
-    // phone's corner means an update is ready.
+    // An e-reader and a phone interlocked like two links, as in web/icon.svg, drawn on the
+    // same 42-unit grid and 2.2-unit stroke as Nickel's status-bar icons. Each outline
+    // breaks where the other passes over it. A dot in the free top-right corner means an
+    // update is ready.
     void drawIcon(const QRectF &box) {
         QPainter painter(this);
         painter.setRenderHint(QPainter::Antialiasing);
@@ -130,24 +132,26 @@ private:
         pen.setJoinStyle(Qt::RoundJoin);
         painter.setPen(pen);
 
-        painter.drawRoundedRect(QRectF(2.5, 9, 15, 24), 2.5, 2.5);
-        painter.drawLine(QLineF(6.5, 14, 13.5, 14));
-        painter.drawLine(QLineF(6.5, 18.5, 13.5, 18.5));
-        painter.drawLine(QLineF(6.5, 23, 11, 23));
-        painter.drawRoundedRect(QRectF(30.5, 15, 9, 18), 2.2, 2.2);
-        painter.drawLine(QLineF(33.5, 29.5, 36.5, 29.5));
+        QPainterPath reader(QPointF(17.1, 32));
+        reader.arcTo(QRectF(6.5, 25, 7, 7), 270, -90);
+        reader.arcTo(QRectF(6.5, 3, 7, 7), 180, -90);
+        reader.arcTo(QRectF(20.5, 3, 7, 7), 90, -90);
+        reader.arcTo(QRectF(20.5, 25, 7, 7), 0, -90);
+        reader.lineTo(23.9, 32);
+        painter.drawPath(reader);
 
-        const QPointF toPhone[] = {{25, 15.5}, {28, 18.5}, {25, 21.5}};
-        const QPointF toReader[] = {{23, 23}, {20, 26}, {23, 29}};
-        painter.drawLine(QLineF(20, 18.5, 28, 18.5));
-        painter.drawPolyline(toPhone, 3);
-        painter.drawLine(QLineF(28, 26, 20, 26));
-        painter.drawPolyline(toReader, 3);
+        QPainterPath phone(QPointF(30.9, 15));
+        phone.arcTo(QRectF(29.5, 15, 6, 6), 90, -90);
+        phone.arcTo(QRectF(29.5, 33, 6, 6), 0, -90);
+        phone.arcTo(QRectF(20.5, 33, 6, 6), 270, -90);
+        phone.arcTo(QRectF(20.5, 15, 6, 6), 180, -90);
+        phone.lineTo(24.1, 15);
+        painter.drawPath(phone);
 
         if (updateReady_) {
-            painter.setPen(QPen(Qt::white, 2.4));
+            painter.setPen(Qt::NoPen);
             painter.setBrush(Qt::black);
-            painter.drawEllipse(QPointF(39, 14), 5.4, 5.4);
+            painter.drawEllipse(QPointF(36, 6.5), 5, 5);
         }
     }
 

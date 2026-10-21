@@ -8,7 +8,7 @@ OUT="$ROOT/dist/site"
 rm -rf "$OUT"
 mkdir -p "$ROOT/dist"
 cp -R "$ROOT/web/site" "$OUT"
-cp "$ROOT/web/i18n.js" "$ROOT/web/icon.svg" "$OUT/"
+cp "$ROOT/web/i18n.js" "$ROOT/web/favicon.svg" "$OUT/"
 if [ -f "$ROOT/dist/KoboRoot.tgz" ]; then
     cp "$ROOT/dist/KoboRoot.tgz" "$OUT/"
 fi

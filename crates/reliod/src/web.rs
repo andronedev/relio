@@ -27,6 +27,7 @@ pub fn router<S: Clone + Send + Sync + 'static>() -> Router<S> {
         .route("/style.css", asset!("text/css; charset=utf-8", "style.css"))
         .route("/sw.js", asset!("text/javascript; charset=utf-8", "sw.js"))
         .route("/manifest.webmanifest", asset!("application/manifest+json", "manifest.webmanifest"))
+        .route("/favicon.svg", asset!("image/svg+xml", "favicon.svg"))
         .route("/icon.svg", asset!("image/svg+xml", "icon.svg"))
         .route("/icon-180.png", asset!("image/png", "icons/icon-180.png"))
         .route("/icon-192.png", asset!("image/png", "icons/icon-192.png"))

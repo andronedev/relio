@@ -93,8 +93,8 @@ button, input { font: inherit; color: inherit; }
 }
 
 .brand-mark {
-  width: 1.6em;
-  height: 1.6em;
+  width: 1.35em;
+  height: 1.35em;
   fill: none;
   stroke: currentColor;
   stroke-width: 2.2;
@@ -102,7 +102,7 @@ button, input { font: inherit; color: inherit; }
   stroke-linejoin: round;
 }
 
-.brand-arrows { stroke: var(--accent); }
+.brand-phone { stroke: var(--accent); }
 
 .device {
   min-width: 0;

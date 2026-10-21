@@ -1,6 +1,6 @@
 // Keeps the app shell available offline; library data always comes live from the e-reader.
-const CACHE = "relio-shell-v3";
-const SHELL = ["/", "/app.js", "/i18n.js", "/style.css", "/manifest.webmanifest", "/icon.svg", "/icon-192.png"];
+const CACHE = "relio-shell-v4";
+const SHELL = ["/", "/app.js", "/i18n.js", "/style.css", "/manifest.webmanifest", "/favicon.svg", "/icon.svg", "/icon-192.png"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(SHELL)));
