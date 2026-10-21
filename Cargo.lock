@@ -542,7 +542,7 @@ dependencies = [
 
 [[package]]
 name = "kobo-touch"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "libc",
 ]
@@ -779,7 +779,7 @@ dependencies = [
 
 [[package]]
 name = "relio-core"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "rusqlite",
  "serde",
@@ -787,7 +787,7 @@ dependencies = [
 
 [[package]]
 name = "relio-kepub"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "encoding_rs",
  "html5ever",
@@ -796,7 +796,7 @@ dependencies = [
 
 [[package]]
 name = "reliod"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "axum",
  "getrandom",
